@@ -1,0 +1,121 @@
+import java.util.Scanner;
+
+public class BankingTransactionSystem {
+
+    static double balance = 1000.00;
+    static String accountHolder = "Pavan";
+    static long accountNumber = 1234567890L;
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n===== BANKING TRANSACTION SYSTEM =====");
+            System.out.println("1. Account Details");
+            System.out.println("2. Check Balance");
+            System.out.println("3. Deposit Money");
+            System.out.println("4. Withdraw Money");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+            choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.println("\n--- Account Details ---");
+                    System.out.println("Account Holder: " + accountHolder);
+                    System.out.println("Account Number: " + accountNumber);
+                    System.out.printf("Balance: ₹%.2f%n", balance);
+                    break;
+
+                case 2:
+                    System.out.printf("Current Balance: ₹%.2f%n", balance);
+                    break;
+
+                case 3:
+                    System.out.print("Enter amount to deposit: ₹");
+                    double deposit = sc.nextDouble();
+
+                    if (deposit > 0) {
+                        balance += deposit;
+                        System.out.printf("₹%.2f deposited successfully.%n", deposit);
+                        System.out.printf("New Balance: ₹%.2f%n", balance);
+                    } else {
+                        System.out.println("Invalid deposit amount!");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter amount to withdraw: ₹");
+                    double withdraw = sc.nextDouble();
+
+                    if (withdraw <= 0) {
+                        System.out.println("Invalid withdrawal amount!");
+                    } else if (withdraw > balance) {
+                        System.out.println("Insufficient balance!");
+                    } else {
+                        balance -= withdraw;
+                        System.out.printf("₹%.2f withdrawn successfully.%n", withdraw);
+                        System.out.printf("Remaining Balance: ₹%.2f%n", balance);
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Thank you for using the Banking Transaction System!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
+===== BANKING TRANSACTION SYSTEM =====
+1. Account Details
+2. Check Balance
+3. Deposit Money
+4. Withdraw Money
+5. Exit
+Enter your choice: 3
+
+Enter amount to deposit: ₹500
+₹500.00 deposited successfully.
+New Balance: ₹1500.00
+
+===== BANKING TRANSACTION SYSTEM =====
+1. Account Details
+2. Check Balance
+3. Deposit Money
+4. Withdraw Money
+5. Exit
+Enter your choice: 4
+
+Enter amount to withdraw: ₹300
+₹300.00 withdrawn successfully.
+Remaining Balance: ₹1200.00
+
+===== BANKING TRANSACTION SYSTEM =====
+1. Account Details
+2. Check Balance
+3. Deposit Money
+4. Withdraw Money
+5. Exit
+Enter your choice: 2
+
+Current Balance: ₹1200.00
+
+===== BANKING TRANSACTION SYSTEM =====
+1. Account Details
+2. Check Balance
+3. Deposit Money
+4. Withdraw Money
+5. Exit
+Enter your choice: 5
+
+Thank you for using the Banking Transaction System!
