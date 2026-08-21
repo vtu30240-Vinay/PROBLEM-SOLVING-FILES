@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class ConstraintDrivenBanking {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        double balance = 5000.00;
+
+        System.out.println("===== BANKING TRANSACTION SYSTEM =====");
+        System.out.printf("Initial Balance: ₹%.2f%n", balance);
+
+        // Deposit
+        System.out.print("\nEnter deposit amount: ₹");
+        double deposit = sc.nextDouble();
+
+        if (deposit > 0) {
+            balance = balance + deposit;
+            System.out.printf("Deposit Successful: ₹%.2f%n", deposit);
+        } else {
+            System.out.println("Constraint Violation: Deposit must be greater than 0.");
+        }
+
+        // Withdrawal
+        System.out.print("\nEnter withdrawal amount: ₹");
+        double withdrawal = sc.nextDouble();
+
+        if (withdrawal <= 0) {
+            System.out.println("Constraint Violation: Withdrawal must be greater than 0.");
+        } else if (withdrawal > balance) {
+            System.out.println("Constraint Violation: Insufficient balance.");
+        } else {
+            balance = balance - withdrawal;
+            System.out.printf("Withdrawal Successful: ₹%.2f%n", withdrawal);
+        }
+
+        // Final Balance
+        System.out.printf("%nFinal Balance: ₹%.2f%n", balance);
+
+        sc.close();
+    }
+}
+===== BANKING TRANSACTION SYSTEM =====
+Initial Balance: ₹5000.00
+
+Enter deposit amount: ₹2000
+Deposit Successful: ₹2000.00
+
+Enter withdrawal amount: ₹1500
+Withdrawal Successful: ₹1500.00
+
+Final Balance: ₹5500.00
