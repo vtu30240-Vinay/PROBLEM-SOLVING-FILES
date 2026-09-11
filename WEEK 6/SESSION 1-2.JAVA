@@ -1,0 +1,32 @@
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+        int n = s.length();
+
+        // Try every possible substring length
+        for (int len = 1; len <= n / 2; len++) {
+
+            // The string length must be divisible by substring length
+            if (n % len != 0) {
+                continue;
+            }
+
+            boolean repeated = true;
+
+            for (int i = len; i < n; i++) {
+                if (s.charAt(i) != s.charAt(i % len)) {
+                    repeated = false;
+                    break;
+                }
+            }
+
+            if (repeated) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+ 
+Input:  "abab"
+Output: true
